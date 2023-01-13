@@ -9,7 +9,7 @@ import PasswordResetModel from "Components/layouts/passwordResetModel";
 const connectdb = require("../Components/connectdb");
 const { getCookie,setCookie } = require("cookies-next");
 import {motion} from "framer-motion"
-const login = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -267,7 +267,7 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
 
 
 // export async function getInitialProps({req,res}){
