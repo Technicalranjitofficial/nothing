@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-
-const uri =
-  "mongodb+srv://thexhacker:rEAKAK3MPKNmmM9g@cluster0.ugev3.mongodb.net/kiit_connect";
+require("dotenv").config();
+const uri =process.env.URI;
 export default async function () {
   if (mongoose.connection.readyState == 1) {
     console.log("Already Connected");

@@ -4,7 +4,7 @@ const { default: Users } = require('../model/Users');
 const { default: connectDB } = require('./connectdb');
 const jwt = require("jsonwebtoken");
 
-const host = "http://localhost:3000";
+const host = "https://kiitconnect.netlify.app";
 
 passport.use(new GoogleStrategy({
     clientID:'654893194221-e9ptiasj6skd0o4r8kdge07t3k352n91.apps.googleusercontent.com',
