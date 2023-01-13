@@ -5,9 +5,8 @@ import LoginIcon from "@mui/icons-material/Login";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import PasswordResetModel from "Components/layouts/passwordResetModel";
-const connectdb = require("../Components/connectdb");
-const { getCookie,setCookie } = require("cookies-next");
+import PasswordResetModel from "../Components/layouts/PasswordResetModel";
+
 import {motion} from "framer-motion"
 const Login = () => {
   const [email, setEmail] = useState("");
