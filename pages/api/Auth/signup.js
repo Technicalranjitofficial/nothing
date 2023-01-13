@@ -62,7 +62,7 @@ export default async function handle(req, res) {
                       expiredAt: Date.now() + 21600000,
                     })
                       .then(() => {
-                        const currentUrl = "http://localhost:3000/";
+                        const currentUrl = "https://kiitconnect.netlify.app/";
                         const mailOption = {
                           from: process.env.AUTH_EMAIL,
                           to: email,

@@ -21,7 +21,7 @@ const Login = () => {
   const [glogin,setGlogin] = useState(false);
   const [resetOpen,setResetOpen] = useState(false);
 
-  const host = "http://localhost:3000";
+  const host = "https://kiitconnect.netlify.app";
 
   const popupReset =()=>{
     setResetOpen((prev)=>!prev);

@@ -28,7 +28,7 @@ export default async function handler(req,res){
                       if (data.expiredAt < Date.now()) {
                         ResetPassword.deleteOne({ userId })
                           .then(() => {
-                            res.json({
+                            res.json({success:false,
                               message:
                                 "Your Link has been expired,Please reset new one",
                             });

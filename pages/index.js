@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 // require("dotenv").config();
 
 function Home({ data, path, res }) {
-  const host = "http://localhost:3000";
+  const host = "https://kiitconnect.netlify.app";
   const handleOnSignup = () => {
     window.open(`${host}/api/google`);
   };
@@ -44,7 +44,7 @@ export async function getServerSideProps({ req, res }) {
   try {
     if (req.cookies.AuthToken) {
       const response = await axios.post(
-        "http://localhost:3000/api/Auth/getuser",
+        "https://kiitconnect.netlify.app/api/Auth/getuser",
         {
           cookies: req.cookies.AuthToken,
         }

@@ -6,7 +6,7 @@ import axios from "axios";
 import style from "../../Components/styles/verification.module.scss"
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import BlockIcon from '@mui/icons-material/Block';
-const uniqueId = () => {
+const UniqueId = () => {
 
   const router  = useRouter();
 
@@ -40,4 +40,4 @@ const uniqueId = () => {
   );
 };
 
-export default uniqueId;
+export default UniqueId;

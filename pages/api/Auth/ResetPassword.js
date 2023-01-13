@@ -29,7 +29,7 @@ export default async function handler(req, res) {
           .json({sucess:false, message: "Please Verify your email first,check your mail" });
       }
       const uniqueString = uuidv4() + user.id;
-      const currentUrl = "http://localhost:3000/";
+      const currentUrl = "https://kiitconnect.netlify.app/";
       const mailOption = {
         from: process.env.AUTH_EMAIL,
         to: email,

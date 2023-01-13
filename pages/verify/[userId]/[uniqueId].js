@@ -13,7 +13,7 @@ const UniqueId = () => {
   let host;
   const { userId, uniqueId } = router.query;
   useEffect(() => {
-    host = window.location.origin + "/api";
+    host = "https://kiitconnect.netlify.app/api";
     if (!host) {
       return;
     }
