@@ -62,13 +62,13 @@ export default async function handle(req, res) {
                       expiredAt: Date.now() + 21600000,
                     })
                       .then(() => {
-                        const currentUrl = "https://kiitconnect.netlify.app/";
+                        const currentUrl = process.env.HOST;;
                         const mailOption = {
                           from: process.env.AUTH_EMAIL,
                           to: email,
                           subject: "Verify Your mail",
                           html: `<p>Click here to verify your mail </p><p><a href=${
-                            currentUrl + "verify/" + _id + "/" + uniqueString
+                            currentUrl + "/verify/" + _id + "/" + uniqueString
                           }>Verify</a></p>`,
                         };
 

@@ -2,12 +2,13 @@ import style from "../Components/styles/login.module.scss";
 import GoogleIcon from "@mui/icons-material/Google";
 import Image from "next/image";
 import LoginIcon from "@mui/icons-material/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import PasswordResetModel from "../Components/layouts/PasswordResetModel";
 
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
+import RedirectModel from "Components/layouts/redirectModel";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -15,18 +16,19 @@ const Login = () => {
   const [message, setMessage] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [loader, setLoader] = useState(false);
-  const [displayMessage,setDisplayMessage] = useState("");
+  const [displayMessage, setDisplayMessage] = useState("");
   const router = useRouter();
-  const [glogin,setGlogin] = useState(false);
-  const [resetOpen,setResetOpen] = useState(false);
+  const [glogin, setGlogin] = useState(false);
+  const [resetOpen, setResetOpen] = useState(false);
+  const [sucess, setSucess] = useState(false);
 
-  const host = "https://kiitconnect.netlify.app";
+  // const host = "https://kiitconnect.netlify.app";
+  const host = "http://localhost:3000";
 
-  const popupReset =()=>{
-    setResetOpen((prev)=>!prev);
-  }
+  const popupReset = () => {
+    setResetOpen((prev) => !prev);
+  };
   const handleOnSubmit = async (e) => {
-    
     e.preventDefault();
     setLoader(true);
     console.log(isLogin);
@@ -36,13 +38,11 @@ const Login = () => {
       return;
     }
 
-    
-
     const index = email.indexOf("@");
     const validate = email.slice(index);
     if (validate !== "@kiit.ac.in") {
       setMessage(true);
-      setDisplayMessage("Invalid kiit mail id!")
+      setDisplayMessage("Invalid kiit mail id!");
       setTimeout(() => {
         setMessage(false);
       }, 2000);
@@ -52,30 +52,32 @@ const Login = () => {
 
     if (isLogin) {
       try {
-        axios.post(`${host}/api/Auth/login`,{
-          email:email,
-          password:password,
-        }).then((response)=>{
-          setDisplayMessage(response.data.message);
-          console.log(response.data)
-          setMessage(true);
-          setTimeout(() => {
-            setMessage(false);
-          }, 10000);
-          if(response.data.sucess){
+        axios
+          .post(`${host}/api/Auth/login`, {
+            email: email,
+            password: password,
+          })
+          .then((response) => {
+            setDisplayMessage(response.data.message);
+            console.log(response.data);
+            setMessage(true);
+            setTimeout(() => {
+              setMessage(false);
+            }, 10000);
+            if (response.data.success) {
+              setSucess(true);
               setName("");
               setEmail("");
               setPassword("");
-              console.log(response.data)
               router.replace("/");
-          }
-          setLoader(false);
-
-        }).catch((err)=>{
-          console.log(err);
-        })
+            }
+            setLoader(false);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } catch (error) {
-        
+        console.log(error);
       }
     } else {
       try {
@@ -92,11 +94,14 @@ const Login = () => {
             setTimeout(() => {
               setMessage(false);
             }, 10000);
-            if(data.data.sucess){
-                setName("");
-                setEmail("");
-                setPassword("");
-                return router.push({pathname:'/account/sucess',query:{sucess:true}});
+            if (data.data.sucess) {
+              setName("");
+              setEmail("");
+              setPassword("");
+              return router.push({
+                pathname: "/account/sucess",
+                query: { sucess: true },
+              });
             }
             setLoader(false);
           })
@@ -110,13 +115,6 @@ const Login = () => {
       }
     }
   };
-
-  // useEffect(()=>{
-  //   const token = getCookie("token");
-  //   if(token){
-  //     window.open("http:localhost:3000/dashboard");
-  //   }
-  // },[])
 
   const handleOnGoogleSignup = () => {
     setGlogin(true);
@@ -141,22 +139,28 @@ const Login = () => {
             <div className={style.google}>
               <button onClick={handleOnGoogleSignup}>
                 {" "}
-                {glogin?<div
-                    class={`spinner-border ${style.loader}`}
-                    role="status"
-                  ><Image
-                  className={style.gicon}
-                  src="/gicon.png"
-                  width={25}
-                  height={25}
-                  alt="gicon"
-                /></div>:<><Image
-                className={style.gicon}
-                src="/gicon.png"
-                width={25}
-                height={25}
-                alt="gicon"
-              />Signup with google</>}
+                {glogin ? (
+                  <div class={`spinner-border ${style.loader}`} role="status">
+                    <Image
+                      className={style.gicon}
+                      src="/gicon.png"
+                      width={25}
+                      height={25}
+                      alt="gicon"
+                    />
+                  </div>
+                ) : (
+                  <>
+                    <Image
+                      className={style.gicon}
+                      src="/gicon.png"
+                      width={25}
+                      height={25}
+                      alt="gicon"
+                    />
+                    Signup with google
+                  </>
+                )}
               </button>
             </div>
             <span className={style.or}>Or signin with email</span>
@@ -246,36 +250,73 @@ const Login = () => {
         </div>
       </div>
 
-      {resetOpen&& <div className={`${style.dark}`}>
-     </div>}
-    
-     {resetOpen && <motion.div
-  initial={{ scale: 0 }}
-  animate={{ rotate: 360, scale: 1 }}
-  transition={{
-    type: "spring",
-    stiffness: 260,
-    damping: 20
-  }} className={style.passwordresetmodel} >
-      <PasswordResetModel popupReset={popupReset}/>
-     
-     </motion.div>}
+      {resetOpen && <div className={`${style.dark}`}></div>}
+
+      {resetOpen && (
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ rotate: 360, scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+          className={style.passwordresetmodel}
+        >
+          <PasswordResetModel popupReset={popupReset} />
+        </motion.div>
+      )}
+
+      {sucess && <div className={`${style.dark}`}></div>}
+      {sucess && <RedirectModel />}
     </div>
-
-
   );
 };
 
 export default Login;
 
 
-// export async function getInitialProps({req,res}){
-//   if(req.cookies.AuthToken){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  export async function getInitialProps(ctx) {
+//   // this is client side cookie that you want
+
+// }
+
+// Login.getInitialProps = async ({ req, res }) => {
+//   const cookie = (await req) ? req.headers.cookie : null;
+//   if (cookie) {
+//     return Router.push("/");
+    
+//   }
+//   return { boy: "hello" };
+// };
+
+// export async function getServerSideProps({req,res}){
+//   const cookies = req?req.headers.cookie:null;
+//   if(cookies){
+//     console.log(cookies);
+//     console.log("yes")
 //     return{
 //       redirect:{
 //         destination:"/"
 //       }
 //     }
 //   }
-//   return{};
+//   console.log("Ni")
+//   return{props:{}};
 // }

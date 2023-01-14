@@ -3,8 +3,10 @@ const GoogleStrategy = require("passport-google-oauth20");
 const { default: Users } = require('../model/Users');
 const { default: connectDB } = require('./connectdb');
 const jwt = require("jsonwebtoken");
+const { default: UserVerification } = require('../model/UserVerification');
+require("dotenv").config();
 
-const host = "https://kiitconnect.netlify.app";
+const host = process.env.HOST;
 
 passport.use(new GoogleStrategy({
     clientID:'654893194221-e9ptiasj6skd0o4r8kdge07t3k352n91.apps.googleusercontent.com',
@@ -55,6 +57,17 @@ passport.use(new GoogleStrategy({
               return  done(err,null,{message:"something went wrong!"});
             })
         }else{
+
+          if(!user.verified){
+            const up = await Users.updateOne({_id:user.id},{$set:{verified:true}});
+            if(up.modifiedCount>0){
+              console.log("User is Verified");
+              UserVerification.findOneAndDelete({userId:user.id}).catch((err)=>{console.log(err)});
+            }else{
+              console.log("User is Not Verified");
+            }
+          }
+
           const u = {
             user:{
               id:user._id,

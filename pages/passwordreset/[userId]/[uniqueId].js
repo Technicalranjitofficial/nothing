@@ -16,7 +16,8 @@ const UniqueId = () => {
   const [passnotmatch, setPassnotmatch] = useState(false);
   let host;
   const { userId, uniqueId } = router.query;
-  host="https://kiitconnect.netlify.app/api";
+  // host="https://kiitconnect.netlify.app/api";
+  host="http://localhost:3000/api";
   useEffect(() => {
     // host = window.location.origin + "/api";
     if (!host) {

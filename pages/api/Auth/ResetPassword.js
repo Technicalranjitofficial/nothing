@@ -7,6 +7,7 @@ import Users from "model/Users";
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 export default async function handler(req, res) {
   if (req.method == "POST") {
@@ -28,14 +29,25 @@ export default async function handler(req, res) {
         return res
           .json({sucess:false, message: "Please Verify your email first,check your mail" });
       }
+
+      const existingVerification = await ResetPassword.findOne({userId:user.id});
+      if(existingVerification){
+        ResetPassword.findOneAndDelete({userId:user.id}).then(()=>{
+         console.log("Deleted Oldone");
+        }).catch((err)=>{
+          console.log(err);
+          return res.json({success:false,message:"Something went wrong!"});
+        })
+      }
+      
       const uniqueString = uuidv4() + user.id;
-      const currentUrl = "https://kiitconnect.netlify.app/";
+      const currentUrl = process.env.HOST;
       const mailOption = {
         from: process.env.AUTH_EMAIL,
         to: email,
         subject: "Reset Your Password",
         html: `<p>Click here to Reset your password </p><p><a href=${
-          currentUrl + "passwordreset/" + user.id + "/" + uniqueString
+          currentUrl + "/passwordreset/" + user.id + "/" + uniqueString
         }>Reset</a></p>`,
       };
 

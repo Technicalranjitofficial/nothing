@@ -3,8 +3,10 @@ import style from "./resetpass.module.scss"
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
+
 const PasswordResetModel = ({popupReset}) => {
-  const host = "https://kiitconnect.netlify.app";
+const host = "http://localhost:3000";
+  // const host = process.env.HOST;
 
   const [email,setEmail] = useState("");
   const [loader,setLoader] = useState(false);

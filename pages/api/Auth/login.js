@@ -18,20 +18,20 @@ export default async function handler(req, res) {
         const user = await Users.findOne({email:email});
         
         if(!user){
-            return res.json({sucess:false,message:"User doesn't exist"});
+            return res.json({success:false,message:"User doesn't exist"});
         }
         console.log(user)
         if(!user.password){
-            return res.json({sucess:false,message:"Please set your password first,Alternate: Use Google Signin"});
+            return res.json({success:false,message:"Please set your password first,Alternate: Use Google Signin"});
         }
         const passwd = await bcrypt.compare(req.body.password,user.password);
         console.log("pas:"+passwd);
         if(!passwd){
-            return res.json({sucess:false,message:"Please try with correct crediential"});
+            return res.json({success:false,message:"Please try with correct crediential"});
         }
 
         if(!user.verified){
-            return res.json({sucess:false,message:"Please Verify your account first,Check your mail for verification"});
+            return res.json({success:false,message:"Please Verify your account first,Check your mail for verification"});
         }
         const data = {
             user:{
@@ -50,11 +50,11 @@ export default async function handler(req, res) {
                 path:'/'
                 
             }));
-            res.json({sucess:true,message:"Logged in sucessfully"});
+            res.json({success:true,message:"Logged in successfully"});
         }
     } catch (error) {
         console.log(error);
-        res.json({sucess:false,message:"Internal Server Error"});
+        res.json({success:false,message:"Internal Server Error"});
     }
   }
 }

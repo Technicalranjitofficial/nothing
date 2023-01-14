@@ -8,7 +8,8 @@ export default async function handler(req,res){
     if(req.method==="POST"){
         try {
          await connectdb();
-            verify(req.body.cookies,"PandaSecurity",async function(err,data){
+        
+            verify(req.body.token,"PandaSecurity",async function(err,data){
                 if(!err && data){
                     console.log(data);
                   const user = await Users.findOne({_id:data.user.id}).select('-password');
