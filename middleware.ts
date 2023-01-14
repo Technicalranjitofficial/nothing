@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
-import { jwtAuth } from "lib/jwtAuth";
+import { jwtAuth } from "./lib/jwtAuth";
 // require("dotenv").config();
 
 export async function middleware(req: NextRequest) {
