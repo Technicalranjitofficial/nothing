@@ -66,7 +66,7 @@ const Filemanager = () => {
           {arr &&
             arr.map((val, ind) => {
               return (
-               <a onClick={()=>get(val.id)}> <FileItem key={ind} val = {val}/></a>
+               <a key={ind} onClick={()=>get(val.id)}> <FileItem  val = {val}/></a>
               );
             })}
         </>
