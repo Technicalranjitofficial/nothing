@@ -8,6 +8,7 @@ export async function middleware(req: NextRequest) {
   let url = req.url;
 
 
+  
     const verified = token &&(await jwtAuth(token).catch((err) => {
     console.log(err);
     }));

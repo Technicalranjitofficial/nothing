@@ -2,3 +2,12 @@
   margin: 0;
   padding: 0;
 }
+/* 
+
+.files{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: blue;
+  cursor: pointer;
+} */
