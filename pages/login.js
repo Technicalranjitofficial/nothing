@@ -8,7 +8,7 @@ import Router, { useRouter } from "next/router";
 import PasswordResetModel from "../Components/layouts/PasswordResetModel";
 
 import { motion } from "framer-motion";
-import RedirectModel from "Components/layouts/redirectModel";
+import RedirectModel from "../Components/layouts/redirectModel";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
