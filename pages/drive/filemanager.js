@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import FileItem from "../../Components/layouts/fileItem";
 import style from "../../Components/styles/filemanager.module.scss";
 
-const list2 = () => {
+const Filemanager = () => {
   const [arr, setArr] = useState([]);
   const [id, setId] = useState();
   const [path, setPath] = useState([]);
   const [loader, setLoader] = useState(false);
-  const url = "http://localhost:3000/api/drive/getfoldersonly";
+
+  
+  const url = "https://kiitconnect.netlify.app/api/drive/getfoldersonly";
 
   const get = (id) => {
     fetch1(id);
@@ -76,4 +78,4 @@ const list2 = () => {
   );
 };
 
-export default list2;
+export default Filemanager;

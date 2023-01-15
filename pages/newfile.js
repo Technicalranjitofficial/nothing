@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Nm from "../Components/Nm";
 import LinkedList from "../node";
 
-const newfile = () => {
+const Newfile = () => {
 
     const [data,setData] = useState("");
     const ll = new LinkedList();
@@ -48,4 +48,4 @@ const deleteNode=(data)=>{
   </>;
 };
 
-export default newfile;
+export default Newfile;
