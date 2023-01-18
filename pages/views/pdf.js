@@ -1,7 +1,7 @@
 import React from 'react'
 
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
-const pdf = () => {
+const Pdf = () => {
 
     // https://drive.google.com/file/d/1uNMw2zByrJZKzpDWr0xBkv7rmMb0JQI5/view?usp=share_link
     const docs=[
@@ -20,4 +20,4 @@ const pdf = () => {
   )
 }
 
-export default pdf
+export default Pdf

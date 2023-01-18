@@ -63,7 +63,7 @@ const Filemanager = () => {
     <div className={style.files}>
       <DriveHeader back={handleOnback} length={path.length} />
 
-      {isLoading && <div  className={style.loading}><span> <div class={`spinner-border ${style.loader}`} role="status"></div></span>Loading please wait...If loading continue for 30 sec please refresh the page..</div>}
+      {isLoading && <div  className={style.loading}><span> <div className={`spinner-border ${style.loader}`} role="status"></div></span>Loading please wait...If loading continue for 30 sec please refresh the page..</div>}
       {/* <div className={style.path}>
         <span>Path : home/video/drive</span>
       </div> */}
