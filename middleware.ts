@@ -7,30 +7,27 @@ export async function middleware(req: NextRequest) {
   const token = req.cookies.get("AuthToken")?.value;
   let url = req.url;
 
-
-  
-    const verified = token &&(await jwtAuth(token).catch((err) => {
-    console.log(err);
+  const verified =
+    token &&
+    (await jwtAuth(token).catch((err) => {
+      console.log(err);
     }));
 
-    if(req.nextUrl.pathname.startsWith("/login") && !verified){
-        return;
-    }
+  if (req.nextUrl.pathname.startsWith("/login") && !verified) {
+    return;
+  }
 
-    if(!verified){
-        return NextResponse.redirect(new URL("/login",req.url));
-    }
+  if (!verified) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 
-    if(verified && req.nextUrl.pathname.startsWith("/login")){
-        return NextResponse.redirect(new URL("/",req.url));
-    }
+  if (verified && req.nextUrl.pathname.startsWith("/login")) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
 
-   
-  
   return NextResponse.next();
 }
 
-
-export const config ={
-    matcher:['/login','/','/drive/filemanager']
-}
+export const config = {
+  matcher: ["/login", "/", "/drive/filemanager"],
+};
