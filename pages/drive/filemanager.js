@@ -6,7 +6,7 @@ import Video from "../../Components/layouts/video";
 import VideoPlayer from "../../Components/layouts/VideoPlayer";
 import style from "../../Components/styles/filemanager.module.scss";
 import getDrive from "../../lib/getdrive";
-import { getQuery } from "../../lib/getquery";
+import { GetQuery } from "../../lib/getquery";
 
 import {motion} from "framer-motion"
 
@@ -14,7 +14,7 @@ const Filemanager = () => {
   const [path, setPath] = useState(["0AB3auOFRmDb9Uk9PVA"]);
   const [id, setId] = useState();
 
-  const { data, refetch, error, isLoading, isFetching } = getQuery(
+  const { data, refetch, error, isLoading, isFetching } = GetQuery(
     path[path.length - 1]
   );
   const handleOnclick = (id) => {
