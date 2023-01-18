@@ -1,0 +1,36 @@
+.videoplayer{
+    width: 100%;
+    height: 100%;
+    // background-color: aqua;
+    position: fixed;
+    // opacity: 0.2;
+    top: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .cancelBtn{
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        z-index: 9999;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .video{
+        width: 100%;
+        // background-color: aquamarine;
+        height: 60%;
+        justify-content:center;
+        display: flex;
+
+        video{
+            object-fit: contain;
+        }
+    
+    }
+}

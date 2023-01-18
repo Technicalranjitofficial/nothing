@@ -5,37 +5,53 @@ import { useEffect } from "react";
 import axios from "axios";
 import { NextResponse } from "next/server";
 import Users from "model/Users";
+import { useQuery } from "react-query";
+import Link from "next/link";
 
 const jwt = require("jsonwebtoken");
 // require("dotenv").config();
 
-function Home({ data,error }) {
+function Home() {
   // const host = "https://kiitconnect.netlify.app";
   const host = "http://localhost:3000";
-
   const router = useRouter();
+  
+  
+  const {data,isError,isLoading} = useQuery('user',()=>{
+    return axios.post("http://localhost:3000/api/Auth/getuser",{
+      cookies:"cookies",
+    });
+  });
+  console.log(data)
 
+ if(isLoading){
+  return <h1>Loading...</h1>
+ }
+
+  // const {data} = query; 
   //   useEffect(() => {}, []);
 
-  const logout = async () => {
-    axios
-      .post(`${host}/api/Auth/logout`)
-      .then((response) => {
-        if (response.data.success) {
-          router.replace("/login");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const logout = async () => {
+  //   axios
+  //     .post(`${host}/api/Auth/logout`)
+  //     .then((response) => {
+  //       if (response.data.success) {
+  //         router.replace("/login");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <>
-      Homepage
-      <button onClick={logout}>logout</button>
-
-      {error?error:data.email}
+     <div className="index">
+      <div className="indexWrapper">
+        <span>{data.data.user.email}</span>
+        <Link href="/drive/filemanager">FileManager</Link>
+      </div>
+     </div>
     </>
   );
 }
@@ -99,19 +115,25 @@ export default Home;
 //   return {props:{sucess:true}};
 // }
 
-export async function getServerSideProps({ req, res }) {
-   const data = await axios.post("http://localhost:3000/api/Auth/getuser",{
-      token:req.cookies.AuthToken
-     }).catch((err)=>{
-      return {
-        props:{
-          error:"Internal Error Occured"
-        }
-      }
-    })
-    return {
-      props:{
-        data:data.data.user
-      }
-    }
-}
+// export async function getServerSideProps({ req, res }) {
+//    const data = await axios.post("http://localhost:3000/api/Auth/getuser",{
+//       token:req.cookies.AuthToken
+//      }).catch((err)=>{
+//       return {
+//         props:{
+//           error:"Internal Error Occured"
+//         }
+//       }
+//     })
+
+//   //  const query = useQuery('users',()=>{
+//   //   return axios.post("http://localhost:3000/api/Auth/getuser",{
+//   //     token:req.cookies.AuthToken,
+//   //   });
+//   //  })
+//     return {
+//       props:{
+//         data:data.data.user
+//       }
+//     }
+// }

@@ -1,0 +1,80 @@
+.driveNav {
+  background-color: rgb(25, 24, 24);
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  color: rgb(171, 169, 169);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+//   border: 1px solid gray;
+box-shadow: 0 0 5px grey;
+  .driveNavWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+      padding: 0 10px;
+      height: 100%;
+    //   margin-left: 20px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    //   background-color: azure;
+
+      span {
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 20px;
+      }
+
+      button{
+        background-color: transparent;
+        border: none;
+        color: white;
+        .back {
+          // padding: 10px 0px;
+          // padding-left: 10px;
+          transition: 0.3s linear;
+          margin-left: 10px;
+          // font-size: 20px;
+          cursor: pointer;
+          &:active{
+              transform: scale(0.85);
+              color: green;
+              
+      box-shadow: 3px 2px 25px 1px rgba(0,0,0,0.25);
+          }
+        }
+      }
+
+      
+    }
+
+    .right {
+      height: 100%;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding-right: 10px;
+
+      a{
+        color: white;
+        background: none;
+        text-decoration: none;
+        button{
+          background: none;
+          border: none;
+          font-size: 18px;
+          font-weight: bold;
+          color: rgb(171, 169, 169);
+        }
+      }
+    //   background-color: azure;
+    }
+  }
+}

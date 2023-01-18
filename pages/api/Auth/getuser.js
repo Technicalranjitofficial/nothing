@@ -6,10 +6,12 @@ const {verify} = require("jsonwebtoken")
 
 export default async function handler(req,res){
     if(req.method==="POST"){
+        const token = req.cookies.AuthToken;
+        console.log(token);
         try {
          await connectdb();
         
-            verify(req.body.token,"PandaSecurity",async function(err,data){
+            verify(token,"PandaSecurity",async function(err,data){
                 if(!err && data){
                     console.log(data);
                   const user = await Users.findOne({_id:data.user.id}).select('-password');

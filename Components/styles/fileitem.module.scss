@@ -4,12 +4,13 @@
     flex: 5%;
     // background-color: red;
     margin: 10px;
-    max-width: 220px;
-    min-width: 220px;
+    max-width: 200px;
+    min-width: 200px;
     border-radius: 10px;
     border: 1px solid gray;
     cursor: pointer;
-    
+  
+   
     position: relative;
     .fileItemWrapper{
         width: 100%;
@@ -19,11 +20,21 @@
         
         justify-content: center;
         align-items: center;
-
+       
         .ext{
             position: absolute;
             top: 0;
             right: 10px;
+            color: rgb(171, 169, 169);
+        }
+
+        .download{
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 10px;
+            color: green;
+            
         }
 
         .fileLogo{
@@ -31,6 +42,7 @@
             // font-size: 500px;
             .middleIcon{
                 font-size: 70px;
+                color: rgb(171, 169, 169);
             }
         }
         
@@ -47,10 +59,12 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            color: rgb(171, 169, 169);
 
             .icon{
                 margin-right: 2px;
                 margin-left: 5px;
+                color: rgb(171, 169, 169);
             }
             // justify-content: center;
             
@@ -62,6 +76,7 @@
                 align-items: center;
                 margin-right: 5px;
                 max-width:40%;
+                color: rgb(171, 169, 169);
                 
 
             }
