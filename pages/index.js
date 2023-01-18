@@ -18,7 +18,7 @@ function Home() {
   
   
   const {data,isError,isLoading} = useQuery('user',()=>{
-    return axios.post("http://localhost:3000/api/Auth/getuser",{
+    return axios.post("https://kiitconnect.netlify.app/api/Auth/getuser",{
       cookies:"cookies",
     });
   });
