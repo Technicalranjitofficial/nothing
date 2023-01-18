@@ -22,7 +22,7 @@ const Login = () => {
   const [resetOpen, setResetOpen] = useState(false);
   const [sucess, setSucess] = useState(false);
 
-  // const host = "https://kiitconnect.netlify.app";
+  const host = "https://kiitconnect.netlify.app";
   // const host = "http://localhost:3000";
 
   const popupReset = () => {
