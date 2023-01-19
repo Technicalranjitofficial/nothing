@@ -12,15 +12,13 @@ const jwt = require("jsonwebtoken");
 // require("dotenv").config();
 
 function Home() {
-  // const host = "https://kiitconnect.netlify.app";
-  const host = "http://localhost:3000";
+  const host = "https://kiitconnect.netlify.app";
+  // const host = "http://localhost:3000";
   const router = useRouter();
   
   
   const {data,isError,isLoading} = useQuery('user',()=>{
-    return axios.post("https://kiitconnect.netlify.app/api/Auth/getuser",{
-      cookies:"cookies",
-    });
+    return axios.post(`${host}/api/Auth/getuser`);
   });
   console.log(data)
 

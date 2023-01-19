@@ -5,6 +5,7 @@ import { jwtAuth } from "./lib/jwtAuth";
 
 export async function middleware(req: NextRequest) {
   const token = req.cookies.get("AuthToken")?.value;
+  console.log("token",token);
   let url = req.url;
 
   const verified =
