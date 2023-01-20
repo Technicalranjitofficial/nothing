@@ -8,7 +8,7 @@ import style from "../../Components/styles/filemanager.module.scss";
 import getDrive from "../../lib/getdrive";
 import { GetQuery } from "../../lib/getquery";
 
-import {motion} from "framer-motion"
+
 
 const Filemanager = () => {
   const [path, setPath] = useState(["0AB3auOFRmDb9Uk9PVA"]);
@@ -76,18 +76,10 @@ const Filemanager = () => {
             return val.mimeType === "video/x-matroska" || val.mimeType==="video/mp4" ? (
               // <a key={ind} onClick={() => playVideo(val.id)}>
                 // {" "}
-                <motion.div
-                initial={{ scale: 0 }}
-                animate={{ rotate: 360, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                }}>
+              
                 <FileItem val={val} />
                 
-                </motion.div>
-                
+            
               // </a>
             ) : (
 
@@ -95,23 +87,9 @@ const Filemanager = () => {
 
               <a key={ind} onClick={() => handleOnclick(val.id)}>
                 {" "}
-                <motion.div
-                initial={{ scale: 0 }}
-                animate={{ rotate: 360, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                }}><FileItem val={val} /></motion.div>
+                <FileItem val={val} />
                 
-              </a>:<motion.div
-                initial={{ scale: 0 }}
-                animate={{ rotate: 360, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                }}><FileItem val={val} /></motion.div>
+              </a>:<FileItem val={val} />
             );
           }):<h1>No data</h1>}
 

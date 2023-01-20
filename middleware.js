@@ -3,7 +3,7 @@ import { jwtVerify } from "jose";
 import { jwtAuth } from "./lib/jwtAuth";
 // require("dotenv").config();
 
-export async function middleware(req: NextRequest) {
+export async function middleware(req) {
   const token = req.cookies.get("AuthToken")?.value;
   console.log("token",token);
   let url = req.url;
@@ -19,10 +19,12 @@ export async function middleware(req: NextRequest) {
   }
 
   if (!verified) {
+    console.log("Not verified")
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
   if (verified && req.nextUrl.pathname.startsWith("/login")) {
+    console.log("something")
     return NextResponse.redirect(new URL("/", req.url));
   }
 
@@ -30,5 +32,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/", ],
+  matcher: ["/login", "/", '/dash'],
 };

@@ -69,7 +69,8 @@ const Login = () => {
               setName("");
               setEmail("");
               setPassword("");
-              router.replace("/");
+              
+            window.location.href="/";
             }
             setLoader(false);
           })
