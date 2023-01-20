@@ -19,15 +19,15 @@ export async function middleware(req:NextRequest) {
     return;
   }
 
-  if (!verified) {
+  if (verified===undefined) {
     console.log("Not verified")
-  return NextResponse.json({err:"Error NotVerified",token:token});
-    // return NextResponse.redirect(new URL("/login", req.url));
+  // return NextResponse.json({err:"Error NotVerified",token:token});
+    return NextResponse.redirect(new URL("/login", req.url));
   }
 
   if (verified && req.nextUrl.pathname.startsWith("/login")) {
-    return NextResponse.json({err:" verified",token:token});
-    // return NextResponse.redirect(new URL("/", req.url));
+    // return NextResponse.json({err:" verified",token:token});
+    return NextResponse.redirect(new URL("/", req.url));
   }
 
   return NextResponse.next();
