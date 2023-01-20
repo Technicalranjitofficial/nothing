@@ -3,7 +3,7 @@ import { jwtVerify } from "jose";
 import { jwtAuth } from "./lib/jwtAuth";
 // require("dotenv").config();
 
-export async function middleware(req) {
+export async function middleware(req:NextRequest) {
   const token = req.cookies.get("AuthToken")?.value;
   console.log("token",token);
   let url = req.url;
