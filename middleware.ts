@@ -12,7 +12,7 @@ export async function middleware(req:NextRequest) {
     token &&
     (await jwtAuth(token).catch((err) => {
       console.log(err);
-      NextResponse.json({err:err,token:token});
+      NextResponse.json({err:err,token:token,verified:verified});
     }));
 
   if (req.nextUrl.pathname.startsWith("/login") && !verified) {
@@ -21,13 +21,13 @@ export async function middleware(req:NextRequest) {
 
   if (verified===undefined) {
     console.log("Not verified")
-  // return NextResponse.json({err:"Error NotVerified",token:token});
-    return NextResponse.redirect(new URL("/login", req.url));
+  return NextResponse.json({err:"Error NotVerified",token:token,verified:verified});
+    // return NextResponse.redirect(new URL("/login", req.url));
   }
 
   if (verified && req.nextUrl.pathname.startsWith("/login")) {
-    // return NextResponse.json({err:" verified",token:token});
-    return NextResponse.redirect(new URL("/", req.url));
+    return NextResponse.json({err:" verified",token:token,verified:verified});
+    // return NextResponse.redirect(new URL("/", req.url));
   }
 
   return NextResponse.next();
