@@ -12,7 +12,7 @@ export async function middleware(req:NextRequest) {
     token &&
     (await jwtAuth(token).catch((err) => {
       console.log(err);
-      NextResponse.json({err:err,token:token,verified:verified});
+      NextResponse.json({err:err,token:token});
     }));
 
   if (req.nextUrl.pathname.startsWith("/login") && !verified) {
