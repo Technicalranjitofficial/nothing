@@ -21,12 +21,12 @@ export async function middleware(req:NextRequest) {
 
   if (verified===undefined) {
     console.log("Not verified")
-  return NextResponse.json({err:"Error NotVerified",token:token,verified:verified,sucess:false});
+  return NextResponse.json({err:"Error NotVerified",token:token,verified:verified});
     // return NextResponse.redirect(new URL("/login", req.url));
   }
 
   if (verified && req.nextUrl.pathname.startsWith("/login")) {
-    return NextResponse.json({err:" verified",token:token,verified:verified,sucess;false});
+    return NextResponse.json({err:" verified",token:token,verified:verified});
     // return NextResponse.redirect(new URL("/", req.url));
   }
 
