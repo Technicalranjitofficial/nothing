@@ -1,0 +1,33 @@
+
+
+        .input{
+            width: 100%;
+            // background-color: bisque;
+            justify-content: center;
+            display: flex;
+            // margin-top: 10px;
+            margin-top: 20px;
+
+           
+            input{
+                width: 80%;
+                margin-right: 10px;
+                padding: 8px;
+                border-radius: 10px;
+                border: none;
+                outline: none;
+
+                &:focus{
+                    border: none;
+
+                }
+                &:hover{
+                    border: none;
+                }
+
+                
+            }
+        }
+
+
+     

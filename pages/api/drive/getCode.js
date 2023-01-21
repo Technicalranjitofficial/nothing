@@ -21,9 +21,12 @@ var drive = google.drive({
   var parents = "1E8fVXMIlHhPhhWDR1h1Gi6AxKmeR-0MO";
   
   const token = "ya29.a0AX9GBdWazzA81mYvlCLLBwcctUVQkUEgO9293nq0vHyZd66QGFetwp5BTlnLF2B…";
+
   jwToken.authorize((authErr,token) => {
     if (authErr) {
+      console.log("token",token);
       console.log("error : " + authErr);
+    
       return;
     } else {
       console.log("Authorization accorded");
@@ -36,6 +39,8 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
 
+      console.log(jwToken);
+
         drive.files.list(
             {includeItemsFromAllDrives:true,
               supportsAllDrives:true,
@@ -45,24 +50,12 @@ export default async function handler(req, res) {
               // fields: "files(id, name,type)",
             },
             (err, { data }) => {
-              if (err) return console.log("The API returned an error: " + err);
+              if (err) return res.json({err:err});
               const files = data.files
               // console.log(files);
               console.log(data.files)
           res.json(files);
-            //   files.map(async (data)=>{
-            //    res
-            //   })
-              
-              // if (files.length) {
-              //   console.log("Files:");
-              //   files.map((file) => {
-                
-              //     console.log(file);
-              //   });
-              // } else {
-              //   console.log("No files found.");
-              // }
+   
             }
           );
           

@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 // import { PdfContainer } from 'react-files-viewer'
 import { QueryClient, QueryClientProvider } from "react-query";
 import {ReactQueryDevtools} from "react-query/devtools"
+import 'highlight.js/styles/default.css';
 import Link from "next/link";
 const queryClinet = new QueryClient();
 export default function App({ Component, pageProps }) {
