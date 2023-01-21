@@ -1,4 +1,6 @@
 import axios from "axios";
+// import {  useRouter } from "next/router";
+import Router from "next/router"; 
 import React, { useEffect, useState } from "react";
 import DriveHeader from "../../Components/layouts/DriveHeader";
 import FileItem from "../../Components/layouts/fileItem";
@@ -13,6 +15,14 @@ import { GetQuery } from "../../lib/getquery";
 const Filemanager = () => {
   const [path, setPath] = useState(["0AB3auOFRmDb9Uk9PVA"]);
   const [id, setId] = useState();
+  const [pop,setPop] = useState(false);
+// const router = useRouter();
+
+  // useEffect(() => { Router.beforePopState((e) => { 
+
+  //   alert("hello world");
+
+  //  }); }, []);
 
   const { data, refetch, error, isLoading, isFetching } = GetQuery(
     path[path.length - 1]
@@ -69,7 +79,7 @@ const Filemanager = () => {
       </div> */}
 
       <div className={style.filesWrapper}>
-        
+    
         {data ?
           data.data.map((val, ind) => {
             
@@ -99,6 +109,8 @@ const Filemanager = () => {
 
       {/* {id && <div className={style.player}></div>}
       {id && <VideoPlayer id={id} cancel={() => setId("")} />} */}
+
+<h1>{pop}</h1>
     </div>
   );
 };

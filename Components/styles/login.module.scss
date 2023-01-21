@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: grey;
+    background-color: rgb(33, 31, 31);
     overflow-y: hidden;
     overflow-x: hidden;
     position: relative;
@@ -13,12 +13,14 @@
     .loginWrapper{
         width: 80%;
         height: auto;
-        background-color: white;
+        background-color: rgb(37, 35, 35);
         display: flex;
         justify-content: space-evenly;
+        box-shadow: 0 0 5px grey;
+        border-radius: 10px;
      
         &.sin{
-           height: 95%;             
+           height: auto;             
         }
         .left{
          
@@ -63,10 +65,12 @@
                     margin-bottom: 10px;
                     font-size: 14px;
                     margin-left: 10px;
+                    color: rgb(148, 145, 145);
                     span{
                         margin-right: 3px;
                         font-weight: bold;
                         font-size: 16px;
+                        color: rgb(247, 119, 119);
                     }
                 }
                 .or{
@@ -78,12 +82,13 @@
                     font-size: 12px;
                     margin: 0 20px;
                     margin-top: 25px;
+                    color: grey;
                 }
                 .or::before,.or::after{
                     content: "";
                    height: 2px;
                     color: wheat;
-                    background-color: black;
+                    background-color: rgb(71, 69, 69);
                     
                 }
               
@@ -96,6 +101,7 @@
                     display: flex;
                     font-weight: bold;
                     font-size: 25px;
+                    color: rgb(237, 222, 195);
                     
                     .logicon{
                         margin-right: 10px;
@@ -124,9 +130,12 @@
                         display: flex;
                         font-size: 12px;
                         font-weight: bold;
+                        box-shadow: 0 0 4px grey;
+                        color: wheat;
                         cursor: pointer;
+                        background-color: rgb(37, 35, 35);
                         &:hover{
-                            background-color: rgb(226, 222, 222);
+                            background-color: rgb(65, 58, 58);
                         }
 
                         .gicon{
@@ -157,6 +166,7 @@
                         display: flex;
                         width: 100%;
                         margin: 10px 0;
+                        color: grey;
                         
                         // background-color: aqua;
 
@@ -165,7 +175,7 @@
                         }
 
                         a{
-                            color: blue;
+                            color: rgb(122, 122, 234);
                             cursor: pointer;
                         }
                     }
@@ -196,9 +206,13 @@
                         margin-left: 25px;
                         font-size: 15px;
                         margin-top: 3px;
+                        color: grey;
+                     
+                        padding-bottom: 20px;
                         .signup{
                             cursor: pointer;
-                            color: blue;
+                            
+                            color: rgb(91, 91, 220);
                         }
                     }
 
@@ -208,8 +222,17 @@
                         margin-top: 20px;
                         width: 90%;
                         justify-content: center;
+                        // background-color: rgb(7, 7, 8);
                        
-                        
+                        input{
+                            background-color: rgb(37, 35, 35);
+                            outline: none;
+                            border: none;
+                            color: wheat;
+                            border-radius: 10px;
+                            box-shadow: 0 0 3px grey;
+
+                        }
                        span{
                         margin-bottom: 2px;
                         font-size: 15px;

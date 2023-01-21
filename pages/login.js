@@ -214,7 +214,7 @@ const Login = () => {
                     role="status"
                   ></div>
                 ) : (
-                  "Login"
+                  isLogin?"Login":"Signup"
                 )}
               </button>
               <span className={style.notregister}>

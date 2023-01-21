@@ -204,7 +204,7 @@ const Program = ({ t2, loading }) => {
                       {/* {isLoading && "Loading...."} */}
                       {/* {isLoading?"Loading...":<> */}
 
-                      {data && data.data}
+                      {data && `${data.data}`}
                       {/* </>} */}
                     </code>
                   </pre>
