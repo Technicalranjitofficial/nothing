@@ -51,6 +51,10 @@ const Program = ({ t2, loading }) => {
     {
       // enabled:false,
       // manual:true,
+      staleTime:300000,
+      // refetchOnMount:"always",
+      
+      refetchOnWindowFocus:false,
     }
   );
 
