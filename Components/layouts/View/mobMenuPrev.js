@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Search2 from '../search/search2';
 import style from "./mobPreview.module.scss"
-const MobMenuPrev = ({t2,mainData,getdata}) => {
+const MobMenuPrev = ({t2,mainData,getdata,language}) => {
 
 
   const [d,setD] = useState(t2.data);
@@ -12,7 +12,7 @@ const MobMenuPrev = ({t2,mainData,getdata}) => {
     <div className={style.mobPreview}>
         <div className={style.mobPreviewWrapper}>
         <div className={style.title}>
-                <span>Topic : C</span>
+                <span className='font-Alegreya font-bold'>Topic : {language}</span>
               </div>
 
             <Search2  t2={t2} setD={setD} />

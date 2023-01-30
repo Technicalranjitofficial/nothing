@@ -70,7 +70,7 @@ const Login = () => {
               setEmail("");
               setPassword("");
               
-            window.location.href="/";
+            router.replace("/dashboard")
             }
             setLoader(false);
           })

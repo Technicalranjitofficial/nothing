@@ -46,7 +46,7 @@ export default async function handler(req, res) {
                 secure:process.env.NODE_ENV!=='development',
                 sameSite:true,
                 maxAge:3600,
-                path:'/'
+                path:'/dashboard'
                 
             }));
             res.json({success:true,message:"Logged in successfully"});

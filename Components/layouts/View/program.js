@@ -18,7 +18,7 @@ import Search2 from "../search/search2";
 // import Search from "../search/search";
 hljs.registerLanguage("javascript", javascript);
 // import Highlight from "react-highlight";
-const Program = ({ t2, loading }) => {
+const Program = ({ t2, loading,language }) => {
   // console.log("data", data);
   useEffect(() => {
     hljs.initHighlighting();
@@ -110,7 +110,7 @@ const Program = ({ t2, loading }) => {
           <div className={style.left}>
             <div className={style.leftWrapper}>
               <div className={style.title}>
-                <span>Topic : C</span>
+                <span className="font-Alegreya font-bold">Topic : {language}</span>
               </div>
               <Search2  t2={t2} setD={setD} />
               <div className={style.list}>
@@ -190,22 +190,20 @@ const Program = ({ t2, loading }) => {
                    
                     </div>
                   </div>
-                  {menuOpen&&<div className={style.mob}> <MobMenuPrev t2={t2} mainData={mainData} getdata={getdata} /></div>}
+                  {menuOpen&&<div className={style.mob}> <MobMenuPrev language={language} t2={t2} mainData={mainData} getdata={getdata} /></div>}
                     {mainData.name && <div className={style.mobTitle}>{mainData.name} </div>}
 
                     {/* {searchEnabled?<Search t2={t2} mainData={mainData} getdata={getdata}/>:""} */}
-                  <pre>
+                  <pre className="bg-dark">
                     {isLoading && (
                       <div className={style.loading}>
                         <span>Loading..</span>
                       </div>
                     )}
                     <code className="c++">
-                      {/* {isLoading && "Loading...."} */}
-                      {/* {isLoading?"Loading...":<> */}
-
+                    
                       {data && `${data.data}`}
-                      {/* </>} */}
+                     
                     </code>
                   </pre>
                 </>

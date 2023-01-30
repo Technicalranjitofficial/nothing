@@ -1,66 +1,28 @@
-import React from "react";
-import connectdb from "../Components/connectdb";
-import { getCookie, removeCookies } from "cookies-next";
-import Users from "../model/Users";
+import Link from 'next/link'
+import React from 'react'
+import Card from '../Components/Card.js/CardMenu'
 
-import Image from "next/image";
-// import { redirect } from 'next/dist/server/api-utils';
-const jwt = require("jsonwebtoken");
-
-const dashboard = ({ email,displayName,profilePic }) => {
-  
-  const handleOnLogout = () => {
-    removeCookies("token");
-    window.open("/","_self");
-  };
-  const myLoader=({src})=>{
-    return profilePic;
-  }
+const Dashboard = () => {
   return (
-    <div>
-      <h1>Dashboard:{displayName}</h1>
-      <Image loader={myLoader} src={profilePic} alt="Profile Pic" width={100} height={100}/>
-      <button onClick={handleOnLogout}>Logout</button>
-      <h1>Login</h1>
-    </div>
-  );
-};
+    <div className='bg-slate-900 min-h-screen' >
 
-export default dashboard;
 
-export async function getServerSideProps({ req, res }) {
-  try {
-    const token = getCookie("token", { req, res });
-    if (!token) {
-      return {
-        redirect: {
-          destination: "/",
-        },
-      };
-    }
-    await connectdb();
-    // console.log(token);
-    const verified = jwt.verify(token, "Ranjit");
-    // console.log(verified.id);
-    const user = await Users.findOne({ _id: verified.id });
-    if (!user) {
-      return {
-        redirect: {
-          destination: "/",
-        },
-      };
-    }
+      <div className='max-w-screen-lg  bg-slate-900 mx-auto '>
 
-     
-
-    return {
-      props: {
-        email: user.email,
-        displayName:user.displayName,
-        profilePic:user.profilePic
-      },
-    };
-  } catch (error) {
-    console.log(error);
-  }
+        <h1 className='text-slate-300 font-Alegreya font-bold p-2.5'>Dashboard</h1>
+       <div className='grid grid-cols-1 md:grid-cols-3 p-2 md:pd-0 gap-5'>
+       <Link className='no-underline' href="/Coding"> <Card name="Coding Section"/></Link>
+       <Link className='no-underline' href="/drive/filemanager"> <Card name="Academic Resources"/></Link>
+        <Card name="Online Courses"/>
+        <Card name="Something Coming.."/>
+        <Card name="Something Coming.."/>
+      
+      
+        
+       </div>
+      </div>
+      </div>
+  )
 }
+
+export default Dashboard
