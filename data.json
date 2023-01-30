@@ -3,17 +3,17 @@
     {
       "name": "C",
       "description":"C programming is a general-purpose, procedural, imperative computer programming lang developed in 1972 by Dennis M. Ritchie at the Bell Telephone Laboratories to develop the UNIX operating system. C is the most widely used computer language. It keeps fluctuating at number one scale of popularity along with Java programming language, which is also equally popular and most widely used among modern software programmers.",
-      "img": "./p.png"
+      "img": "./c.png"
     },
     {
       "name": "C++",
       "description": "C++ is a middle-level programming language developed by Bjarne Stroustrup starting in 1979 at Bell Labs. C++ runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This C++ tutorial adopts a simple and practical approach to describe the concepts of C++ for beginners to advanded software engineers.",
-      "img": "./p.png"
+      "img": "./cpp.png"
     },
     {
       "name": "Java",
       "description":"Java is a programming language and a platform. Java is a high level, robust, object-oriented and secure programming language.Java was developed by Sun Microsystems (which is now the subsidiary of Oracle) in the year 1995. James Gosling is known as the father of Java. Before Java, its name was Oak. Since Oak was already a registered company, so James Gosling and his team changed the name from Oak to Java",
-      "img": "./p.png"
+      "img": "./java.png"
     }
   ]
 }

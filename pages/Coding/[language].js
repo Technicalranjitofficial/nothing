@@ -3,6 +3,7 @@ import React from 'react'
 import { GetCodeQuery } from '../../lib/getCodeQuery';
 import style from "../../Components/styles/Coding.module.scss"
 import Program from '../../Components/layouts/View/program';
+import Loader from "../../Components/Loader"
 const Language = () => {
 
     const router = useRouter();
@@ -15,7 +16,9 @@ const Language = () => {
   
   
   
-   
+   if(isLoading){
+    return <Loader/>
+   }
   
     return (
       <div className={style.coding}>

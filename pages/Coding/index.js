@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import CodingMenu from '../../Components/Card.js/CodingSection/CodingMenu'
+import Navbar from '../../Components/Navbar'
 import data from "../../data.json"
 
 const index = () => {
@@ -10,7 +11,7 @@ const index = () => {
 
 
       <div className='max-w-screen-lg  bg-slate-900 px-2 mx-auto '>
-
+        <Navbar/>
         <h1 className='text-slate-300 font-bold font-Alegreya text-2xl md:text-3xl pt-4'>Coding Section</h1>
        <div className='grid grid-cols-1 gap-0'>
        {data && data.data.map((val,index)=>{
