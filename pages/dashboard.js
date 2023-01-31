@@ -14,7 +14,7 @@ const Dashboard = () => {
        <div className='grid grid-cols-1 md:grid-cols-3 p-2 md:pd-0 gap-5'>
        <Link className='no-underline' href="/Coding"> <Card name="Coding Section" img="./code.png"/></Link>
        <Link className='no-underline' href="/drive/filemanager"> <Card name="Academic Resources" img="./academic.png" /></Link>
-        <Card name="Online Courses" img="onlineCourse.png"/>
+       <Link className='no-underline' href="/courses"><Card name="Online Courses" img="onlineCourse.png"/></Link>
         <Card name="Something Coming.."/>
         <Card name="Something Coming.."/>
       

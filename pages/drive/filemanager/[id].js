@@ -16,7 +16,7 @@ import FileItem from "../../../Components/layouts/fileItem";
 import { decode } from "string-encode-decode";
 
 
-const id = () => {
+const Id = () => {
     const router = useRouter();
     const {id} = router.query;
   const [path, setPath] = useState(["0AB3auOFRmDb9Uk9PVA"]);
@@ -118,4 +118,4 @@ const id = () => {
   );
 };
 
-export default id;
+export default Id;

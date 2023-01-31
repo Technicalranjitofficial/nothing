@@ -28,8 +28,8 @@ const Posts = ({blogs,user}) => {
       <div className='mx-auto max-w-screen-lg px-3 py-6 '>
         <Navbar/>
   <Post user={user && user} client={client} blogs={blogs}/>
+  
   <div className='border-t mt-7 border-gray-600 '></div>
-
   <div className='border-t mt-7 border-gray-600 '></div>
 
       </div>
