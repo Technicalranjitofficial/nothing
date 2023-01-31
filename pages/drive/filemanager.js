@@ -1,7 +1,9 @@
 import axios from "axios";
+import Link from "next/link";
 // import {  useRouter } from "next/router";
 import Router from "next/router"; 
 import React, { useEffect, useState } from "react";
+import { encode } from "string-encode-decode";
 import DriveHeader from "../../Components/layouts/DriveHeader";
 import FileItem from "../../Components/layouts/fileItem";
 import Video from "../../Components/layouts/video";
@@ -16,6 +18,9 @@ const Filemanager = () => {
   const [path, setPath] = useState(["0AB3auOFRmDb9Uk9PVA"]);
   const [id, setId] = useState();
   const [pop,setPop] = useState(false);
+
+  const a= "ram";
+  console.log(encode(a));
 // const router = useRouter();
 
   // useEffect(() => { Router.beforePopState((e) => { 
@@ -95,11 +100,12 @@ const Filemanager = () => {
 
               val.mimeType==="application/vnd.google-apps.folder" ?
 
-              <a key={ind} onClick={() => handleOnclick(val.id)}>
+              // <a key={ind} onClick={() => handleOnclick(val.id)}>
+              <Link key={ind} href={`/drive/filemanager/${val.id}`}>
                 {" "}
                 <FileItem val={val} />
                 
-              </a>:<FileItem val={val} />
+              </Link>:<FileItem val={val} />
             );
           }):<h1>No data</h1>}
 
