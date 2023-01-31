@@ -13,7 +13,7 @@ const client = createClient({
   useCdn: true,
 });
 
-const index = ({ course }) => {
+const Index = ({ course }) => {
   const [data,setData]= useState(course);
   const filter = (input)=>{
     if(input.length>0){
@@ -48,7 +48,7 @@ const index = ({ course }) => {
   );
 };
 
-export default index;
+export default Index;
 
 export async function getServerSideProps() {
   const course = await client.fetch(`*[_type == "Course"]`);
