@@ -14,7 +14,7 @@ const DriveHeader = ({length,back}) => {
         {/* </div> */}
     </div>
     <div className={style.right}>
-     <Link href="/"><button>Home</button></Link>
+     <Link href="/dashboard"><button>Dashboard</button></Link>
     </div>
     </div>
    </div>

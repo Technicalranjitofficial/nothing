@@ -9,8 +9,8 @@ require("dotenv").config();
 const host = process.env.HOST;
 
 passport.use(new GoogleStrategy({
-    clientID:'654893194221-e9ptiasj6skd0o4r8kdge07t3k352n91.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID:`${process.env.clientID}`,
+    clientSecret: `${process.env.clientSecret}`,
     callbackURL: `${host}/api/redirect`,
     
 },async(accessToken,refreshToken,profile,done)=>{

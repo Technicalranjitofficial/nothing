@@ -7,7 +7,7 @@ import Link from "next/link";
 import SearchBox from "../../Components/PremiumCourse/SearchBox";
 import { useState } from "react";
 const client = createClient({
-  projectId: "fsu412nu",
+  projectId: `${process.env.projectId}`,
   dataset: "production",
   apiVersion: "2022-03-25",
   useCdn: true,

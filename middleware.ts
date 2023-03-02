@@ -4,13 +4,13 @@ import { jwtAuth } from "./lib/jwtAuth";
 // require("dotenv").config();
 
 export async function middleware(req:NextRequest) {
-  const token = req.cookies.get("AuthToken")?.value;
+  const token = req.cookies.get("AuthToken");
   console.log("token",token);
   let url = req.url;
 
   const verified =
     token &&
-    (await jwtAuth(token).catch((err) => {
+    (await jwtAuth(token.value).catch((err) => {
       console.log(err);
      return NextResponse.json({err:err,token:token,sucess:"false"});
     }));
@@ -27,12 +27,12 @@ export async function middleware(req:NextRequest) {
 
   if (verified && req.nextUrl.pathname.startsWith("/login")) {
     // return NextResponse.json({err:" verified",token:token,verified:verified});
-    return NextResponse.redirect(new URL("/", req.url));
+    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/login", "/", '/dash'],
+  matcher: ["/login", "/", '/dashboard'],
 };

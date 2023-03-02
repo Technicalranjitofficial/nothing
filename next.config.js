@@ -6,6 +6,9 @@ const nextConfig = {
     C_ID: process.env.C_ID,
     CP_ID: process.env.CP_ID,
     JAVA_ID: process.env.JAVA_ID,
+    host: process.env.HOST,
+    projectId: process.env.projectId,
+    filemanager: process.env.filemanager,
     
   }
 }

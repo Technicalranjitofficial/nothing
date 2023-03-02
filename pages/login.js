@@ -22,7 +22,7 @@ const Login = () => {
   const [resetOpen, setResetOpen] = useState(false);
   const [sucess, setSucess] = useState(false);
 
-  const host = "https://kiitconnect.netlify.app";
+  const host = `${process.env.host}`;
   // const host = "http://localhost:3000";
 
   const popupReset = () => {
@@ -197,7 +197,7 @@ const Login = () => {
                   className={style.in}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  type="text"
+                  type="password"
                   required
                   placeholder="Enter your password"
                 />
@@ -244,10 +244,17 @@ const Login = () => {
           </div>
         </div>
         <div className={style.right}>
-          <img src="/right.png" className={style.rimage} />
-          <h2>
-            Welcome to <span className="text-danger">KIIT CONNECT</span>
+          {/* <img src="/kiit.png" className={style.rimage} /> */}
+          <div className={style.nd}>
+         <div className={style.cnt}>
+         <h2 className="text-cyan-900">
+            Welcome to <span className="text-green-200">KIIT CONNECT</span>
           </h2>
+          <span className={style.subtitle}>The Learning Bot</span>
+         </div>
+          </div>
+          <br />
+       
         </div>
       </div>
 

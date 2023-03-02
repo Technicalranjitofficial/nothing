@@ -20,7 +20,7 @@ export default async function(req,res,next){
       path:'/'
       
   }));
-    return res.redirect("/");
+    return res.redirect("/dashboard");
   
     
     

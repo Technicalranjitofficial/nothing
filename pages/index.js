@@ -12,8 +12,8 @@ const jwt = require("jsonwebtoken");
 // require("dotenv").config();
 
 function Home() {
-  const host = "https://kiitconnect.netlify.app";
-  // const host = "http://localhost:3000";
+  // const host = "https://kiitconnect.netlify.app";
+  const host = `${process.env.host}`;
   const router = useRouter();
   
   
@@ -46,7 +46,7 @@ function Home() {
     <>
      <div className="index">
       <div className="indexWrapper">
-        <span>{data.data.user.email}</span>
+        {/* <span>{data.data.user.email}</span> */}
         <Link href="/drive/filemanager">FileManager</Link>
       </div>
      </div>

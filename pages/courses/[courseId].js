@@ -12,7 +12,7 @@ import { createClient } from 'next-sanity';
 import Post from "../../Components/Post"
 import Navbar from '../../Components/Navbar';
 const client = createClient({
-    projectId: "fsu412nu",
+    projectId: `${process.env.projectId}`,
     dataset: "production",
     apiVersion: "2022-03-25",
     useCdn: true

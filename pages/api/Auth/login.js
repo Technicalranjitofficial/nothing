@@ -39,14 +39,18 @@ export default async function handler(req, res) {
 
         }
 
+        
+
         const token = jwt.sign(data,process.env.SECRET_KEY);
+
+        console.log("hello",token,data,process.env.SECRET_KEY)
         if(token){
             res.setHeader('Set-Cookie',cookie.serialize('AuthToken',token,{
                 httpOnly:true,
                 secure:process.env.NODE_ENV!=='development',
                 sameSite:true,
                 maxAge:3600,
-                path:'/dashboard'
+                path:'/'
                 
             }));
             res.json({success:true,message:"Logged in successfully"});

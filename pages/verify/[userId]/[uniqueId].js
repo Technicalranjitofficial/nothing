@@ -10,11 +10,12 @@ const UniqueId = () => {
   const [message, setMessage] = useState("Message");
   const [sucess,setSucess] = useState(false);
   const [loading, setLoading] = useState(true);
-  let host;
   const { userId, uniqueId } = router.query;
+  const mainHost = `${process.env.host}`;
+  let host;
   useEffect(() => {
-    host = "https://kiitconnect.netlify.app/api";
-    // host="http://localhost:3000/api";
+    // host = "https://kiitconnect.netlify.app/api";
+     host=`${mainHost}/api`;
     if (!host) {
       return;
     }

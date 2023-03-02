@@ -15,7 +15,7 @@ import { GetQuery } from "../../lib/getquery";
 
 
 const Filemanager = () => {
-  const [path, setPath] = useState(["0AB3auOFRmDb9Uk9PVA"]);
+  const [path, setPath] = useState([`${process.env.filemanager}`]);
   const [id, setId] = useState();
   const [pop,setPop] = useState(false);
 

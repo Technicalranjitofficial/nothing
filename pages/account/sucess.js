@@ -33,7 +33,7 @@ const UniqueId = () => {
               </>
            
           </div>
-          <span className={`${style.active} text-white`} >Please check your mail to verify your account!! </span>
+          <span className={`${style.active} text-white text-center`}  >Please check your mail to verify your account!! </span>
         </div>
       </div>}
     </>

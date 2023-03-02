@@ -15,8 +15,9 @@ const Dashboard = () => {
        <Link className='no-underline' href="/Coding"> <Card name="Coding Section" img="./code.png"/></Link>
        <Link className='no-underline' href="/drive/filemanager"> <Card name="Academic Resources" img="./academic.png" /></Link>
        <Link className='no-underline' href="/courses"><Card name="Online Courses" img="onlineCourse.png"/></Link>
-        <Card name="Something Coming.."/>
-        <Card name="Something Coming.."/>
+       <Link className='no-underline' href="https://rdtools.me/"><Card name="Github Profile Readme Gen" img={"gitreadme.png"}/></Link>
+        
+        <Card name="Something Coming.." img="others.png"/>
       
       
         
