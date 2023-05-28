@@ -25,28 +25,31 @@ const Index = () => {
     "3":"it"
   }
 
-  useEffect(async () => {
+  useEffect(() => {
 
    
-     const d = await axios.get(
-      "https://raw.githubusercontent.com/amitpandey-github/data/main/index.json"
-    ).then(async(d)=>{
-      setIndexPage(d.data);
-      console.log(d.data);
-      // if(indexPage.length>0){
-      //   console.log(d.data[0])
-      // }
-
-      const p = await axios.get(d.data[branch][helper[branch]][semester]['link']);
-      console.log();
-      setSection(p.data[0]['First']);
-
-      setLoading(false);
-      // console.log();
-
-     
-    })
-
+     const fetchData=async()=>{
+      const d = await axios.get(
+        "https://raw.githubusercontent.com/amitpandey-github/data/main/index.json"
+      ).then(async(d)=>{
+        setIndexPage(d.data);
+        console.log(d.data);
+        // if(indexPage.length>0){
+        //   console.log(d.data[0])
+        // }
+  
+        const p = await axios.get(d.data[branch][helper[branch]][semester]['link']);
+        console.log();
+        setSection(p.data[0]['First']);
+  
+        setLoading(false);
+        // console.log();
+  
+       
+      })
+  
+     }
+     fetchData();
 
     // console.log(d.data[0][branch][semester])
     
@@ -109,7 +112,7 @@ const Index = () => {
          {loading?<GiCircularSaw className="fixed top-1/2 left-1/2 animate-spin" size={50}/> : section.length > 0 &&
             section.map((data, index) => {
               return (
-                <>
+                <div key={index}>
                   <h2 className="justify-center flex bg-slate-700 py-2">
                     {data["name"]}
                   </h2>
@@ -134,7 +137,7 @@ const Index = () => {
                     <tbody>
                       {data["pyqs"].map((d, i) => {
                         return (
-                          <tr className="">
+                          <tr className="" key={i}>
                             <td className="border-t border-b  py-2 px-2  border-gray-700">
                               {d["year"]}
                             </td>
@@ -143,6 +146,7 @@ const Index = () => {
                             </td>
                             <a href={`/academic/view/${d['id']}`} 
                             target="_blank"
+                            rel="noreferrer"
                             className="no-underline">
                               {" "}
                               
@@ -155,6 +159,7 @@ const Index = () => {
                                 <a
                                   href={`/academic/view/${d['solution']}`}
                                   className="no-underline text-blue-500" target="_blank"
+                                  rel="noreferrer"
                                 >
                                   View
                                 </a>
@@ -168,7 +173,7 @@ const Index = () => {
                     </tbody>
                   </table>
                   <br />
-                </>
+                </div>
               );
             })}
         </div>

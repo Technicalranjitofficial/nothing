@@ -52,7 +52,7 @@ const AcademicLeft = ({ getData }) => {
             className="text-slate-200  py-2 px-8 my-2 rounded-md bg-slate-700"
           >
             {options.map((op, index) => {
-              return <option value={op.value}>{op.label}</option>;
+              return <option key={index} value={op.value}>{op.label}</option>;
             })}
           </select>
         </div>
@@ -64,7 +64,7 @@ const AcademicLeft = ({ getData }) => {
         <ul className="px-2 py-2">
          
         {semester.map((sem,index)=>{
-          return  <li onClick={()=>{getData(index,branch);
+          return  <li key={index} onClick={()=>{getData(index,branch);
             setSemester(index);
           
           }} className={`py-3 hover:bg-slate-700 rounded-md pl-3 cursor-pointer font-Roboto text-lg font-bold text-slate-300  ${index==sems?"bg-cyan-700":""}`}>
