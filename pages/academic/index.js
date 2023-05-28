@@ -7,7 +7,7 @@ import { GiCircularSaw } from "react-icons/gi";
 
 const data = require("/testkiit.json");
 
-const index = () => {
+const Index = () => {
   const [section, setSection] = useState([]);
   const [hidden,setHidden] = useState(true);
   const [mMode,setMMode] = useState(true);
@@ -177,4 +177,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

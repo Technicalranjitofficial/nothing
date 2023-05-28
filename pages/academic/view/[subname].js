@@ -2,7 +2,7 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
-const test = () => {
+const View = () => {
 
  const router = useRouter();
  
@@ -17,4 +17,4 @@ useEffect(()=>{
   )
 }
 
-export default test
+export default View
