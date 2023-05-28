@@ -30,7 +30,7 @@ var drive = google.drive({
     }
   });
   
-
+  const fields = 'nextPageToken, files(id, name, createdTime, modifiedTime, mimeType, size)';
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -43,7 +43,9 @@ export default async function handler(req, res) {
               pageSize: 200,
               q: "'" + req.body.id + "' in parents",
               // fields: "files(id, name,type)",
+              fields:fields
             },
+            
             (err, { data }) => {
               if (err) return console.log("The API returned an error: " + err);
               const files = data.files

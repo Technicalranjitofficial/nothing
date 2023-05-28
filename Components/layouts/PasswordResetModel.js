@@ -5,8 +5,10 @@ import axios from 'axios';
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 
 const PasswordResetModel = ({popupReset}) => {
-const host = "http://localhost:3000";
+// const host = "http://localhost:3000";
   // const host = process.env.HOST;
+
+  const host = `${process.env.host}`;
 
   const [email,setEmail] = useState("");
   const [loader,setLoader] = useState(false);
@@ -76,7 +78,7 @@ const host = "http://localhost:3000";
             <button onClick={handleOnSubmit}>Submit</button>
           </div></>}
           </>}
-         <span className={style.notemsg}>Dear Users,if you face any proble or if you have any query or feedback then please <span >contact@gmail.com</span></span>
+         <span className={style.notemsg}>Dear Users,if you face any problem or if you have any query or feedback then please <span >contact@gmail.com</span></span>
           
         </div>
     </div>

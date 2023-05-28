@@ -43,7 +43,7 @@ export default async function handler(req, res) {
       const uniqueString = uuidv4() + user.id;
       const currentUrl = process.env.HOST;
       const mailOption = {
-        from: process.env.AUTH_EMAIL,
+        from:`"KIIT CONNECT" <${process.env.AUTH_EMAIL}>` ,
         to: email,
         subject: "Reset Your Password",
         html: `<p>Click here to Reset your password </p><p><a href=${

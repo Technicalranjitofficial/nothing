@@ -40,7 +40,7 @@ export default async function handle(req, res) {
           .then((hashedPassword) => {
             Users.create({
               email: req.body.email,
-              accessToken: "manually",
+              accessToken:req.body.accessToken?req.body.accessToken:"manually",
               profilePic: null,
               displayName: req.body.name,
               verified: false,
@@ -64,7 +64,7 @@ export default async function handle(req, res) {
                       .then(() => {
                         const currentUrl = process.env.HOST;;
                         const mailOption = {
-                          from: process.env.AUTH_EMAIL,
+                          from:`"KIIT CONNECT" <${process.env.AUTH_EMAIL}>` ,
                           to: email,
                           subject: "Verify Your mail",
                           html: `<p>Click here to verify your mail </p><p><a href=${
