@@ -288,7 +288,7 @@ const Index = ({ data }) => {
             <form
               onSubmit={handleSubmit}
               method="post"
-              className="flex flex-col w-full p-3 md:p-0 md:w-5/6"
+              className="flex flex-col w-full p-2 md:p-0 md:w-5/6"
             >
               <label htmlFor="projectName">Project Name:</label>
               <input
@@ -372,7 +372,7 @@ const Index = ({ data }) => {
           <br />
 
           <div className="w-full flex flex-row justify-center items-center ">
-            <div className="md:w-5/6  p-3 text-white">
+            <div className="md:w-5/6  p-2 text-white">
               {fData.map((val, index) => {
                 return (
                   <div
@@ -441,14 +441,14 @@ const Index = ({ data }) => {
                     {val["githubUrl"] && (
                       <p className="text-xs font-serif ">
                         {" "}
-                        <span className="text-slate-300 md:text-sm">Github Link:</span> <a href="" className="text-blue-400 no-underline">{val["githubUrl"]}</a>
+                        <span className="text-slate-300 md:text-sm">Github Link:</span> <a href={val['githubUrl']} target="_blank" rel="noreferrer" className="text-blue-400 no-underline">{val["githubUrl"]}</a>
                       </p>
                     )}
 
                     {val["liveUrl"] && (
                       <p className="text-xs font-serif ">
                         {" "}
-                       <span className="text-slate-300 text-sm"> Live Link: </span><a href="" className="text-blue-400 no-underline">{val["liveUrl"]}</a>
+                       <span className="text-slate-300 text-sm"> Live Link: </span><a href={val['liveUrl']} target="_blank" rel="noreferrer" className="text-blue-400 no-underline">{val["liveUrl"]}</a>
                       </p>
                     )}
                     <div className=" flex justify-center w-full">
