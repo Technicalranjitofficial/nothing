@@ -245,11 +245,12 @@ const Index = ({ data }) => {
 
      {openDetele &&  <div className="w-full fixed justify-center items-center flex  h-screen bg-transparent">
             <div className="absolute bg-slate-600 
-           border-2 border-cyan-500 border-dashed text-slate-300 rounded-lg w-2/3  md:w-1/4 h-64 flex flex-col items-center justify-center">
-              <h3 className="text-xl font-bold font-Roboto
+           border-2 border-cyan-500 border-dashed text-slate-300 rounded-lg w-2/3 
+           md:w-2/3 lg:w-1/4 h-64 flex flex-col items-center justify-center">
+              <h3 className="lg:text-xl text-sm font-bold font-Roboto
               animate-pulse ">Are you Sure want to delete ?</h3>
               <br />
-             <p> <span className="text-cyan-500 font-bold">Project</span>: {toDeleteProject.name}</p>
+             <p className="text-xs md:text-sm"> <span className="text-cyan-500 font-bold">Project</span>: {toDeleteProject.name}</p>
          
 
              { message.length>0 && <p>{message}</p>}
@@ -258,17 +259,17 @@ const Index = ({ data }) => {
         {loading? <div className="flex flex-col items-center">
           <AiOutlineLoading3Quarters className="animate-spin" size={30} />
           <br />
-          <p>Please wait..</p>
+          <p className="text-xs md:text-sm">Please wait..</p>
         </div>: deleteComplete?<button className="bg-red-700 rounded-md font-Roboto font-bold hover:bg-red-800 px-4 py-2"  onClick={()=>{
           setOpenDelete(false);
           setreload((prevCount) => prevCount + 1);
         }}>OK</button> :   <div className="flex   flex-row w-full justify-evenly">
-           <button className="bg-green-700 rounded-md font-Roboto font-bold hover:bg-green-800 px-4"
+           <button className="bg-green-700 text-xs md:text-sm rounded-md font-Roboto font-bold hover:bg-green-800 px-4"
            onClick={()=>handleOnConfirmDelete()}
            
            >Yes</button>
              {/* <br /> */}
-             <button className="bg-red-700 rounded-md font-Roboto font-bold hover:bg-red-800 px-4 py-2"  onClick={()=>setOpenDelete(false)}>Cancel</button>
+             <button className="bg-red-700 rounded-md font-Roboto font-bold hover:bg-red-800 px-4 py-2 text-xs md:text-sm"  onClick={()=>setOpenDelete(false)}>Cancel</button>
            </div>}
 
 
@@ -287,7 +288,7 @@ const Index = ({ data }) => {
             <form
               onSubmit={handleSubmit}
               method="post"
-              className="flex flex-col w-4/5"
+              className="flex flex-col w-full p-3 md:p-0 md:w-5/6"
             >
               <label htmlFor="projectName">Project Name:</label>
               <input
@@ -371,7 +372,7 @@ const Index = ({ data }) => {
           <br />
 
           <div className="w-full flex flex-row justify-center items-center ">
-            <div className="md:w-4/5 text-white">
+            <div className="md:w-5/6  p-3 text-white">
               {fData.map((val, index) => {
                 return (
                   <div
@@ -385,16 +386,16 @@ const Index = ({ data }) => {
                         <img
                           src={val['profilePic']}
                           alt=""
-                          className="w-20 h-20 aspect-square rounded-full"
+                          className="md:w-20 md:h-20 w-12 h-12 aspect-square  rounded-full"
                         />
 
                         <div className="flex flex-col ml-4 items-left justify-center ">
-                          <h3 className="text-base font-Roboto font-bold text-slate-300">{val["uploadedBy"] || "Ram"}</h3>
+                          <h4 className="text-sm md:text-base font-Roboto font-bold text-slate-300">{val["uploadedBy"] || "Ram"}</h4>
 
                           <div className="">
-                            <span className="text-xs md:text-sm text-slate-200">{val["email"] && val["email"]}</span>
+                            <span className="text-xs font-thin md:text-sm text-slate-100">{val["email"] && val["email"]}</span>
                             <br />
-                            <span className="text-xs md:text-sm text-slate-300">Uploaded on {val["createdDate"]}</span>
+                            <span className="text-xs font-thin md:text-sm text-slate-200">Uploaded on {val["createdDate"]}</span>
                           </div>
                           <br />
                         </div>
@@ -436,16 +437,16 @@ const Index = ({ data }) => {
                       {val["projectName"] }
                     </p>
 
-                    <p className="w-full text-slate-300 text-base font-Roboto">{val["projectDesc"]}</p>
+                    <p className="w-full text-slate-400 md:text-base text-xs font-serif">{val["projectDesc"]}</p>
                     {val["githubUrl"] && (
-                      <p>
+                      <p className="text-xs font-serif ">
                         {" "}
-                        <span className="text-slate-300 text-sm">Github Link:</span> <a href="" className="text-blue-400 no-underline">{val["githubUrl"]}</a>
+                        <span className="text-slate-300 md:text-sm">Github Link:</span> <a href="" className="text-blue-400 no-underline">{val["githubUrl"]}</a>
                       </p>
                     )}
 
                     {val["liveUrl"] && (
-                      <p>
+                      <p className="text-xs font-serif ">
                         {" "}
                        <span className="text-slate-300 text-sm"> Live Link: </span><a href="" className="text-blue-400 no-underline">{val["liveUrl"]}</a>
                       </p>
@@ -474,6 +475,7 @@ export async function getServerSideProps({ req, res }) {
   if (req.cookies.AuthToken) {
     console.log("cookies" + req.cookies.AuthToken);
     const response = await axios.post(
+      // "http://localhost:3000/api/Auth/getuser",
       "https://kiitconnect.live/api/Auth/getuser",
       {
         cookies: req.cookies.AuthToken,
