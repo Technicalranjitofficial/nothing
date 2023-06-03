@@ -6,7 +6,7 @@ const {verify} = require("jsonwebtoken")
 
 export default async function handler(req,res){
     if(req.method==="POST"){
-        const token = req.cookies.AuthToken;
+        const token = req.body.cookies;
         console.log(token);
         try {
          await connectdb();

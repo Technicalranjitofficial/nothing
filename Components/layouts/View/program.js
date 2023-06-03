@@ -45,9 +45,14 @@ const Program = ({ t2, loading,language }) => {
   const { data, error, isLoading, refetch } = useQuery(
     ["codes", mainData.id],
     () =>
-      axios.get(
-        `https://www.googleapis.com/drive/v3/files/${mainData.id}?alt=media&key=AIzaSyCdVB-50SIiRTLwDDuwuHgtEPR-eEopMls`
-      ),
+      axios.post(
+        `http://localhost:3000/api/drive/fetchprogram`
+        ,{
+          "url":`https://drive.google.com/uc?export=download&id=${mainData.id}`
+        }
+      ).then((res)=>{
+        return res.data
+      }),
     {
       // enabled:false,
       // manual:true,
@@ -70,7 +75,7 @@ const Program = ({ t2, loading,language }) => {
     }
   };
 
-  console.log(error, data);
+  console.log(data);
 
   // if(isLoading){
   //   return <h1>loading...</h1>
@@ -202,7 +207,7 @@ const Program = ({ t2, loading,language }) => {
                     )}
                     <code className="c++">
                     
-                      {data && `${data.data}`}
+                      {data && `${data}`}
                      
                     </code>
                   </pre>

@@ -51,6 +51,8 @@ const Index = () => {
      }
      fetchData();
 
+    
+
     // console.log(d.data[0][branch][semester])
     
 
