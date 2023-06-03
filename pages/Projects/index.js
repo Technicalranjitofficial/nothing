@@ -9,7 +9,7 @@ import { GiSelfLove } from "react-icons/gi";
 import { AiFillDelete, AiOutlineLoading3Quarters } from "react-icons/ai";
 import { BsCheck2Circle } from "react-icons/bs";
 
-const index = ({ data }) => {
+const Index = ({ data }) => {
   const [fData, setFData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [uploading, setDoneUploading] = useState(false);
@@ -468,7 +468,7 @@ const index = ({ data }) => {
   );
 };
 
-export default index;
+export default Index;
 
 export async function getServerSideProps({ req, res }) {
   if (req.cookies.AuthToken) {
